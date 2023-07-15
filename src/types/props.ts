@@ -2,4 +2,12 @@ type ChildrenProps = {
   children: React.ReactNode;
 };
 
-export type { ChildrenProps };
+type ModalProps = {
+  title: string;
+  description: string;
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+};
+
+export type { ChildrenProps, ModalProps };
