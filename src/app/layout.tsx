@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 
 // Components
 import OuterProviders from "@/components/providers/OuterProviders";
+import InnerProviders from "@/components/providers/InnerProviders";
 
 // Types
 import { ChildrenProps } from "@/types/props";
@@ -22,7 +23,11 @@ export default function RootLayout({ children }: ChildrenProps) {
   return (
     <OuterProviders>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={inter.className} suppressHydrationWarning={true}>
+          {children}
+
+          <InnerProviders />
+        </body>
       </html>
     </OuterProviders>
   );

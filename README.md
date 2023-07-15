@@ -9,8 +9,8 @@ Explore the E-commerce [demo](https://maxjn-ecommerce.vercel.app/) and its Admin
 - **UI:** TSX, Tailwindcss, [Shadcn/ui](https://ui.shadcn.com/)
 - TypeScript
 - **Nextjs v13.4**
-- **Main Packages:**
-- **Secondary Packages:**
+- **Main Packages:** Redux, Clerk,
+- **Secondary Packages:** HotToast
 - **DataBase:** MySQL + PlanetScale + Prisma
 - **Routing:** New app directory
 
