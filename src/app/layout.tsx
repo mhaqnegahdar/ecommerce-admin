@@ -1,0 +1,29 @@
+// Hooks / Packages
+import "./globals.css";
+import type { Metadata } from "next";
+
+// Components
+import OuterProviders from "@/components/providers/OuterProviders";
+
+// Types
+import { ChildrenProps } from "@/types/props";
+
+// Fonts
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "E-commerce Admin",
+  description: "E-commerce Admin",
+};
+
+export default function RootLayout({ children }: ChildrenProps) {
+  return (
+    <OuterProviders>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </OuterProviders>
+  );
+}
