@@ -8,6 +8,7 @@ import { Form, Formik, FormikProps } from "formik";
 import { storeSchema } from "@/lib/forms/validationSchemas";
 import { storeInitValues } from "@/lib/forms/initialValues";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 // Component
 import Modal from "@/components/ui/Modal";
@@ -15,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 // Types
+import { OnSubmitParams, StoreForm } from "@/types/formValues";
 
 const StoreModal = () => {
   // Redux
@@ -26,14 +28,34 @@ const StoreModal = () => {
     return {
       initialValues: storeInitValues,
       validationSchema: storeSchema,
-      onSubmit: () => {
-        console.log("hi");
-      },
       id: "store_form",
+      onSubmit: async (
+        values: StoreForm,
+        { setSubmitting, resetForm }: OnSubmitParams
+      ) => {
+        await axios
+          .post(`/api/stores`, values)
+          .then(response => {
+            // OnSuccess
+            console.log(response);
+            if (response.status == 200) {
+              toast.success(`Created ${values.name} store successfully!`);
+              resetForm();
+              dispatch(onClose());
+            }
+          })
+          .catch(error => {
+            //On Error
+            if (error.response.data) {
+              toast.error(error.response.data);
+            } else {
+              toast.error("Somthing went wrong");
+            }
+          })
+          .finally(() => setSubmitting(false));
+      },
     };
-  }, []);
-
-  console.log("schema:", storeSchema);
+  }, [dispatch]);
 
   return (
     <Modal
@@ -43,16 +65,30 @@ const StoreModal = () => {
       description="Add a new Store to manage your products and categories"
     >
       <Formik {...formInit}>
-        {({ errors, values }) => {
+        {({ isSubmitting, resetForm }) => {
           return (
             <Form>
-              <Input name="name" label="Name" placeholder="E-commerce" />
+              <Input
+                name="name"
+                label="Name"
+                placeholder="E-commerce"
+                disabled={isSubmitting}
+              />
               {/* Buttons */}
               <div className="flex items-center justify-end gap-2">
-                <Button type="reset" variant={"outline"} className="mt-4">
+                <Button
+                  type="reset"
+                  variant={"outline"}
+                  className="mt-4"
+                  disabled={isSubmitting}
+                  onClick={() => {
+                    resetForm();
+                    dispatch(onClose());
+                  }}
+                >
                   Cancel
                 </Button>
-                <Button type="submit" className="mt-4">
+                <Button type="submit" className="mt-4" disabled={isSubmitting}>
                   Submit
                 </Button>
               </div>
