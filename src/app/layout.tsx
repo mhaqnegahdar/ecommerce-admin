@@ -7,7 +7,7 @@ import OuterProviders from "@/components/providers/OuterProviders";
 import InnerProviders from "@/components/providers/InnerProviders";
 
 // Types
-import { ChildrenProps } from "@/types/props";
+import { ContainerProps } from "@/types/props";
 
 // Fonts
 import { Inter } from "next/font/google";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "E-commerce Admin",
 };
 
-export default function RootLayout({ children }: ChildrenProps) {
+export default function RootLayout({ children }: ContainerProps) {
   return (
     <OuterProviders>
       <html lang="en">

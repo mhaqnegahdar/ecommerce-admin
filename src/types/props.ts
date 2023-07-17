@@ -1,5 +1,9 @@
-type ChildrenProps = {
+type ContainerProps = {
   children: React.ReactNode;
+};
+
+type StoreIdProps = {
+  params: { storeId: string };
 };
 
 type ModalProps = {
@@ -10,4 +14,6 @@ type ModalProps = {
   children?: React.ReactNode;
 };
 
-export type { ChildrenProps, ModalProps };
+type DashboardLayoutProps = StoreIdProps & ContainerProps;
+
+export type { ContainerProps, ModalProps, DashboardLayoutProps, StoreIdProps };

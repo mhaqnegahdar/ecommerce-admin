@@ -2,10 +2,10 @@
 import { ClerkProvider } from "@clerk/nextjs";
 
 // Types
-import { ChildrenProps } from "@/types/props";
+import { ContainerProps } from "@/types/props";
 import StoreProvider from "./StoreProvider";
 
-const OuterProviders = ({ children }: ChildrenProps) => {
+const OuterProviders = ({ children }: ContainerProps) => {
   return (
     <ClerkProvider>
       <StoreProvider>{children}</StoreProvider>

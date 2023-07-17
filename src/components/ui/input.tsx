@@ -16,7 +16,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, name, label, disabled, ...props }, ref) => {
     return (
       <div>
-        <label className="font-medium mb-2">{label}</label>
+        <label className="font-medium mb-6">{label}</label>
         <Field
           type={type}
           name={name}
