@@ -1,3 +1,14 @@
+import { Store } from "@prisma/client";
+import { PopoverTrigger } from "@/components/ui/popover";
+
+type PopoverTriggerProps = React.ComponentPropsWithoutRef<
+  typeof PopoverTrigger
+>;
+
+interface StoreSwitcherProps extends PopoverTriggerProps {
+  items: Store[];
+}
+
 type ContainerProps = {
   children: React.ReactNode;
 };
@@ -16,4 +27,10 @@ type ModalProps = {
 
 type DashboardLayoutProps = StoreIdProps & ContainerProps;
 
-export type { ContainerProps, ModalProps, DashboardLayoutProps, StoreIdProps };
+export type {
+  ContainerProps,
+  ModalProps,
+  DashboardLayoutProps,
+  StoreIdProps,
+  StoreSwitcherProps,
+};

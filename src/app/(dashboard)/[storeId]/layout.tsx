@@ -3,6 +3,9 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prismadb";
 
+// Components
+import Header from "@/components/layout/header/Header";
+
 // Types
 import { DashboardLayoutProps } from "@/types/props";
 
@@ -29,8 +32,8 @@ const layout = async ({ children, params }: DashboardLayoutProps) => {
 
   return (
     <>
-      <nav>This will be a navbar</nav>
-      {children}
+      <Header />
+      <main>{children}</main>
     </>
   );
 };
