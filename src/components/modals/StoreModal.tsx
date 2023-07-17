@@ -42,6 +42,8 @@ const StoreModal = () => {
               toast.success(`Created ${values.name} store successfully!`);
               resetForm();
               dispatch(onClose());
+              // to completely refresh the route
+              window.location.assign(`/${response.data.id}`);
             }
           })
           .catch(error => {

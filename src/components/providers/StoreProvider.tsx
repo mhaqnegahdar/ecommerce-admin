@@ -4,9 +4,9 @@ import { Provider } from "react-redux";
 import store from "@/redux/store";
 
 // Types
-import { ChildrenProps } from "@/types/props";
+import { ContainerProps } from "@/types/props";
 
-const StoreProvider = ({ children }: ChildrenProps) => {
+const StoreProvider = ({ children }: ContainerProps) => {
   return <Provider store={store}>{children}</Provider>;
 };
 

@@ -6,8 +6,6 @@ import { selectIsOpen, onOpen, onClose } from "@/redux/modal/storeModalSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 
 // Components
-import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -21,11 +19,5 @@ export default function Home() {
     }
   }, [isOpen, dispatch]);
 
-  return (
-    <main>
-      <div className="p-4">
-        <UserButton afterSignOutUrl="/" />
-      </div>
-    </main>
-  );
+  return null;
 }
