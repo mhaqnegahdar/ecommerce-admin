@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 
 // Components
 import StoreModal from "@/components/modals/StoreModal";
+import AlertModal from "@/components/modals/AlertModal";
 
 const ModalProvider = () => {
   const [mounted, setMounted] = useState(false);
@@ -20,6 +21,7 @@ const ModalProvider = () => {
   return (
     <>
       <StoreModal />
+      <AlertModal />
     </>
   );
 };

@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { selectIsOpen, onClose } from "@/redux/modal/storeModalSlice";
 import { Form, Formik, FormikProps } from "formik";
 import { storeSchema } from "@/lib/forms/validationSchemas";
-import { storeInitValues } from "@/lib/forms/initialValues";
+import { storeInit } from "@/lib/forms/initialValues";
 import toast from "react-hot-toast";
 import axios from "axios";
 
@@ -26,7 +26,7 @@ const StoreModal = () => {
   // States
   const formInit = useMemo(() => {
     return {
-      initialValues: storeInitValues,
+      initialValues: storeInit,
       validationSchema: storeSchema,
       id: "store_form",
       onSubmit: async (
@@ -37,7 +37,7 @@ const StoreModal = () => {
           .post(`/api/stores`, values)
           .then(response => {
             // OnSuccess
-            console.log(response);
+
             if (response.status == 200) {
               toast.success(`Created ${values.name} store successfully!`);
               resetForm();
@@ -69,7 +69,7 @@ const StoreModal = () => {
       <Formik {...formInit}>
         {({ isSubmitting, resetForm }) => {
           return (
-            <Form>
+            <Form id={formInit.id}>
               <Input
                 name="name"
                 label="Name"

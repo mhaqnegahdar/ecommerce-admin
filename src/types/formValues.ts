@@ -1,4 +1,10 @@
+import { Store } from "@prisma/client";
+
 type StoreForm = {
+  name: string;
+};
+
+type StoreSettingsForm = {
   name: string;
 };
 
@@ -9,4 +15,4 @@ type OnSubmitParams = {
 };
 
 // Export
-export type { StoreForm, OnSubmitParams };
+export type { OnSubmitParams, StoreForm, StoreSettingsForm };
