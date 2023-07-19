@@ -1,8 +1,15 @@
 // Types
-import { StoreForm } from "@/types/formValues";
+import { StoreForm, StoreSettingsForm } from "@/types/formValues";
+import { Store } from "@prisma/client";
 
-const storeInitValues = {
+const storeInit = {
   name: "",
 } as StoreForm;
 
-export { storeInitValues };
+const storeSettingsInit = (store: Store): StoreSettingsForm => {
+  return {
+    name: store.name,
+  };
+};
+
+export { storeInit, storeSettingsInit };

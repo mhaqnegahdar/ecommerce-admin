@@ -9,6 +9,10 @@ interface StoreSwitcherProps extends PopoverTriggerProps {
   items: Store[];
 }
 
+type SettingsFormProps = {
+  store: Store;
+};
+
 type ContainerProps = {
   children: React.ReactNode;
 };
@@ -27,10 +31,17 @@ type ModalProps = {
 
 type DashboardLayoutProps = StoreIdProps & ContainerProps;
 
+type HeadingProps = {
+  title: string;
+  description: string;
+};
+
 export type {
   ContainerProps,
   ModalProps,
   DashboardLayoutProps,
   StoreIdProps,
   StoreSwitcherProps,
+  SettingsFormProps,
+  HeadingProps,
 };
