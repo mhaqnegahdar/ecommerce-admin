@@ -36,6 +36,10 @@ type HeadingProps = {
   description: string;
 };
 
+type ApiAlertProps = {
+  variant: "admin" | "public";
+} & HeadingProps;
+
 export type {
   ContainerProps,
   ModalProps,
@@ -44,4 +48,5 @@ export type {
   StoreSwitcherProps,
   SettingsFormProps,
   HeadingProps,
+  ApiAlertProps,
 };

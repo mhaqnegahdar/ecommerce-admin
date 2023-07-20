@@ -8,6 +8,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { onOpen } from "@/redux/modal/alertModalSlice";
 import { useAppDispatch } from "@/redux/hooks";
+import { useOrigin } from "@/hooks/useOrigin";
 
 // Components
 import Heading from "@/components/ui/Heading";
@@ -25,11 +26,13 @@ import { Trash } from "lucide-react";
 import { OnSubmitParams, StoreSettingsForm } from "@/types/formValues";
 import { storeSettingsInit } from "@/lib/forms/initialValues";
 import { storeSettingsSchema } from "@/lib/forms/validationSchemas";
+import ApiAlert from "@/components/ui/ApiAlert";
 
 const SettingsForm = ({ store }: SettingsFormProps) => {
   const router = useRouter();
   const params = useParams();
   const dispatch = useAppDispatch();
+  const origin = useOrigin();
 
   // States
   const formInit = useMemo(() => {
@@ -108,6 +111,12 @@ const SettingsForm = ({ store }: SettingsFormProps) => {
           );
         }}
       </Formik>
+      <Separator />
+      <ApiAlert
+        title="NEXT_PUBLIC_API_URL"
+        description={`${origin}/api/${params.storeId}`}
+        variant="public"
+      />
     </>
   );
 };
