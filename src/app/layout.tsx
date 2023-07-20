@@ -11,7 +11,6 @@ import { ContainerProps } from "@/types/props";
 
 // Fonts
 import { Inter } from "next/font/google";
-import { prisma } from "@/lib/prismadb";
 
 const inter = Inter({ subsets: ["latin"] });
 

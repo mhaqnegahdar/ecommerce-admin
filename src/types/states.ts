@@ -7,6 +7,11 @@ interface AlertModalState {
   title: string;
   description: string;
   action: string;
+
+  api: string;
+  successMessage: string;
+  failMessage: string;
+  afterRoute: string;
 }
 
 type AlertModalPayload = Omit<AlertModalState, "isOpen">;

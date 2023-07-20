@@ -8,4 +8,9 @@ const storeSettingsSchema = object({
   name: string().required("Required!"),
 });
 
-export { storeSchema, storeSettingsSchema };
+const billboardSchema = object({
+  label: string().required("Required!"),
+  imageUrl: string().required("Required!"),
+});
+
+export { storeSchema, storeSettingsSchema, billboardSchema };

@@ -7,7 +7,7 @@ export async function POST(req: Request) {
     // Authorization using clerck
     const { userId } = auth();
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("Unauthonticated", { status: 401 });
     }
 
     // Getting Body
