@@ -1,6 +1,10 @@
 // Types
-import { StoreForm, StoreSettingsForm } from "@/types/formValues";
-import { Store } from "@prisma/client";
+import {
+  BillboardForm,
+  StoreForm,
+  StoreSettingsForm,
+} from "@/types/formValues";
+import { Billboard, Store } from "@prisma/client";
 
 const storeInit = {
   name: "",
@@ -12,4 +16,11 @@ const storeSettingsInit = (store: Store): StoreSettingsForm => {
   };
 };
 
-export { storeInit, storeSettingsInit };
+const billboardInit = (billboard: Billboard | null): BillboardForm => {
+  return {
+    label: billboard?.label || "",
+    imageUrl: billboard?.label || "",
+  };
+};
+
+export { storeInit, storeSettingsInit, billboardInit };

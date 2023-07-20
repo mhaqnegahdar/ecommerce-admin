@@ -20,28 +20,37 @@ const AlertModal = () => {
 
   // Redux
   const dispatch = useAppDispatch();
-  const { isOpen, action, title, description } = useAppSelector(selectState);
+  const {
+    isOpen,
+    action,
+    title,
+    description,
+    api,
+    successMessage,
+    failMessage,
+    afterRoute,
+  } = useAppSelector(selectState);
 
   // Actions
 
   // Delete Store
-  const deleteStore = async () => {
+  const deleteReq = async () => {
     setIsSubmitting(true);
     await axios
-      .delete(`/api/stores/${params.storeId}`)
+      .delete(api)
       .then(response => {
         // OnSuccess
 
         if (response.status == 200) {
-          toast.success(`Store deleted successfully!`);
+          toast.success(successMessage);
           dispatch(onClose());
           router.refresh();
-          router.push(`/`);
+          router.push(afterRoute);
         }
       })
       .catch(error => {
         //On Error
-        toast.error("Make sure you removed all products and categories first.");
+        toast.error(failMessage);
       })
       .finally(() => setIsSubmitting(false));
   };
@@ -71,7 +80,7 @@ const AlertModal = () => {
           type="submit"
           className="mt-4"
           disabled={isSubmitting}
-          onClick={() => (action === "deleteStore" ? deleteStore() : {})}
+          onClick={() => (action === "delete" ? deleteReq() : {})}
         >
           Continue
         </Button>

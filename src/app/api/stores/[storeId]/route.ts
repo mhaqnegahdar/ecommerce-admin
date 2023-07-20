@@ -10,7 +10,7 @@ export async function PATCH(req: Request, { params }: StoreIdProps) {
     // Authorization using clerck
     const { userId } = auth();
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("Unauthonticated", { status: 401 });
     }
 
     // Getting Body
@@ -43,7 +43,7 @@ export async function DELETE(_req: Request, { params }: StoreIdProps) {
     // Authorization using clerck
     const { userId } = auth();
     if (!userId) {
-      return new NextResponse("Unauthorized", { status: 401 });
+      return new NextResponse("Unauthonticated", { status: 401 });
     }
 
     // Getting Store id

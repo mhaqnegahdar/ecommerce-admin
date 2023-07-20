@@ -69,11 +69,15 @@ const SettingsForm = ({ store }: SettingsFormProps) => {
 
   const deletePayload = useMemo(() => {
     return {
-      title: "Are you sure?",
+      title: `Are you sure you want to delete "${store.name}" store?`,
       description: "This action cannot be undone.",
-      action: "deleteStore",
+      action: "delete",
+      api: `/api/stores/${params.storeId}`,
+      successMessage: "Store deleted successfully.",
+      failMessage: "Make sure you removed all products and categories first.",
+      afterRoute: `/`,
     };
-  }, []);
+  }, [store.name, params.storeId]);
 
   return (
     <>
@@ -92,7 +96,7 @@ const SettingsForm = ({ store }: SettingsFormProps) => {
         {({ isSubmitting, resetForm }) => {
           return (
             <Form id={formInit.id} className="w-full space-y-8">
-              <div className="grid grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <Input
                   name="name"
                   type="text"

@@ -1,26 +1,38 @@
-import { Store } from "@prisma/client";
+import { Billboard, Store } from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
 >;
 
-interface StoreSwitcherProps extends PopoverTriggerProps {
-  items: Store[];
-}
-
+// Forms
 type SettingsFormProps = {
   store: Store;
 };
 
-type ContainerProps = {
-  children: React.ReactNode;
+type BillboardFormProps = {
+  billboard: Billboard | null;
 };
 
+// Pages
 type StoreIdProps = {
   params: { storeId: string };
 };
 
+type BillboardIdProps = {
+  params: { billboardId: string };
+};
+
+type BillboardPatchParams = {
+  params: { storeId: string; billboardId: string };
+};
+
+// Layouts
+type ContainerProps = {
+  children: React.ReactNode;
+};
+
+// Components
 type ModalProps = {
   title: string;
   description: string;
@@ -28,6 +40,10 @@ type ModalProps = {
   onClose: () => void;
   children?: React.ReactNode;
 };
+
+interface StoreSwitcherProps extends PopoverTriggerProps {
+  items: Store[];
+}
 
 type DashboardLayoutProps = StoreIdProps & ContainerProps;
 
@@ -40,6 +56,12 @@ type ApiAlertProps = {
   variant: "admin" | "public";
 } & HeadingProps;
 
+export interface ImageInputProps {
+  name: string;
+  label: string;
+  disabled: boolean;
+}
+
 export type {
   ContainerProps,
   ModalProps,
@@ -49,4 +71,7 @@ export type {
   SettingsFormProps,
   HeadingProps,
   ApiAlertProps,
+  BillboardIdProps,
+  BillboardFormProps,
+  BillboardPatchParams,
 };
