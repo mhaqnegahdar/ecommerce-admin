@@ -1,5 +1,6 @@
 import { Billboard, Store } from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
+import { BillboardColumn } from "@/types/columns";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -56,6 +57,10 @@ type ApiAlertProps = {
   variant: "admin" | "public";
 } & HeadingProps;
 
+type BillboardsClientProps = {
+  formattedBillboards: BillboardColumn[];
+  store: Store;
+};
 export interface ImageInputProps {
   name: string;
   label: string;
@@ -74,4 +79,5 @@ export type {
   BillboardIdProps,
   BillboardFormProps,
   BillboardPatchParams,
+  BillboardsClientProps,
 };

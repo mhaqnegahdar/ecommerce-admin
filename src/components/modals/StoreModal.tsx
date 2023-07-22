@@ -12,7 +12,7 @@ import axios from "axios";
 
 // Component
 import Modal from "@/components/ui/Modal";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/FormikInput";
 import { Button } from "@/components/ui/button";
 
 // Types

@@ -14,7 +14,7 @@ import { useOrigin } from "@/hooks/useOrigin";
 import Heading from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/FormikInput";
 
 // Types
 import { BillboardFormProps } from "@/types/props";
