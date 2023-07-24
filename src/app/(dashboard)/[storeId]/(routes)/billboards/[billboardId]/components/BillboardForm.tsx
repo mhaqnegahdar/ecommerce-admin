@@ -8,7 +8,6 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { onOpen } from "@/redux/modal/alertModalSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { useOrigin } from "@/hooks/useOrigin";
 
 // Components
 import Heading from "@/components/ui/Heading";
@@ -26,14 +25,12 @@ import { Trash } from "lucide-react";
 import { OnSubmitParams, BillboardForm } from "@/types/formValues";
 import { billboardInit } from "@/lib/forms/initialValues";
 import { billboardSchema } from "@/lib/forms/validationSchemas";
-import ApiAlert from "@/components/ui/ApiAlert";
 import ImageInput from "@/components/ui/ImageInput";
 
 const BillboardForm = ({ billboard }: BillboardFormProps) => {
   const router = useRouter();
   const params = useParams();
   const dispatch = useAppDispatch();
-  const origin = useOrigin();
 
   const pageInit = useMemo(() => {
     if (billboard) {

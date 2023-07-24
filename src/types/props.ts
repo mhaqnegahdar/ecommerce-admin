@@ -28,6 +28,10 @@ type BillboardPatchParams = {
   params: { storeId: string; billboardId: string };
 };
 
+type ApiListProps = {
+  entityName: string;
+  entityIdName: string;
+};
 // Layouts
 type ContainerProps = {
   children: React.ReactNode;
@@ -51,6 +55,7 @@ type DashboardLayoutProps = StoreIdProps & ContainerProps;
 type HeadingProps = {
   title: string;
   description: string;
+  className?: string;
 };
 
 type ApiAlertProps = {
@@ -60,6 +65,9 @@ type ApiAlertProps = {
 type BillboardsClientProps = {
   formattedBillboards: BillboardColumn[];
   store: Store;
+};
+type CellActionProps = {
+  data: BillboardColumn;
 };
 export interface ImageInputProps {
   name: string;
@@ -80,4 +88,6 @@ export type {
   BillboardFormProps,
   BillboardPatchParams,
   BillboardsClientProps,
+  CellActionProps,
+  ApiListProps,
 };

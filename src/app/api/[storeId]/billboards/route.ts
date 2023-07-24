@@ -54,3 +54,22 @@ export async function POST(req: Request, { params }: StoreIdProps) {
     return new NextResponse("Internal error", { status: 500 });
   }
 }
+
+export async function GET(_req: Request, { params }: StoreIdProps) {
+  try {
+    if (!params.storeId) {
+      return new NextResponse("Store id is required", { status: 400 });
+    }
+
+    const billboard = await prisma.billboard.findMany({
+      where: {
+        storeId: params.storeId,
+      },
+    });
+
+    return NextResponse.json(billboard);
+  } catch (error) {
+    console.log("[BILLBOARDS_GET]", error);
+    return new NextResponse("Internal error", { status: 500 });
+  }
+}
