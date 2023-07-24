@@ -19,7 +19,7 @@ const storeSettingsInit = (store: Store): StoreSettingsForm => {
 const billboardInit = (billboard: Billboard | null): BillboardForm => {
   return {
     label: billboard?.label || "",
-    imageUrl: billboard?.label || "",
+    imageUrl: billboard?.imageUrl || "",
   };
 };
 

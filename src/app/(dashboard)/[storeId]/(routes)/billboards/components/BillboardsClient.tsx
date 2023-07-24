@@ -15,6 +15,7 @@ import { BillboardsClientProps } from "@/types/props";
 
 // Icons
 import { Plus } from "lucide-react";
+import ApiList from "@/components/ui/ApiList";
 
 const BillboardsClient = ({
   formattedBillboards,
@@ -25,18 +26,30 @@ const BillboardsClient = ({
 
   return (
     <>
-      <section className=" flex items-center justify-between">
+      <section className=" flex  items-center justify-between">
         <Heading
           title={`Billboards (${formattedBillboards.length})`}
           description={`Manage ${store.name} store billboards`}
+          className="w-full sm:w-auto"
         />
         <Button
+          className="hidden sm:flex  "
           onClick={() => {
             router.push(`/${params.storeId}/billboards/new`);
           }}
         >
           <Plus className="me-2 w-4 h-4" />
           Add New
+        </Button>
+        <Button
+          variant={`secondary`}
+          className=" rounded-full block sm:hidden h-[3.25rem]"
+          onClick={() => {
+            router.push(`/${params.storeId}/billboards/new`);
+          }}
+        >
+          <span className="sr-only">Add New</span>
+          <Plus className=" w-4 h-4" />
         </Button>
       </section>
       <Separator />
@@ -45,6 +58,9 @@ const BillboardsClient = ({
         columns={columns}
         data={formattedBillboards}
       />
+      <Heading title="API" description="API calls for Billboards" />
+      <Separator />
+      <ApiList entityName="billboards" entityIdName="billboardId" />
     </>
   );
 };

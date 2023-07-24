@@ -10,24 +10,10 @@ export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label?: string;
-  filter: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  (
-    {
-      className,
-      type,
-      name,
-      label,
-      disabled,
-      value,
-      onChange,
-      filter,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, type, name, label, disabled, ...props }, ref) => {
     return (
       <div>
         {label ? <label className="font-medium ">{label}</label> : null}
