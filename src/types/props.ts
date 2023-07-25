@@ -1,6 +1,6 @@
-import { Billboard, Store } from "@prisma/client";
+import { Billboard, Category, Store } from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
-import { BillboardColumn } from "@/types/columns";
+import { BillboardColumn, CategoryColumns } from "@/types/columns";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -15,6 +15,11 @@ type BillboardFormProps = {
   billboard: Billboard | null;
 };
 
+type CategoryFormProps = {
+  category: Category | null;
+  billboards: Billboard[] | null;
+};
+
 // Pages
 type StoreIdProps = {
   params: { storeId: string };
@@ -26,6 +31,13 @@ type BillboardIdProps = {
 
 type BillboardPatchParams = {
   params: { storeId: string; billboardId: string };
+};
+type CategoryIdProps = {
+  params: { categoryId: string; storeId: string };
+};
+
+type CategoryPatchParams = {
+  params: { storeId: string; categoryId: string };
 };
 
 type ApiListProps = {
@@ -66,8 +78,13 @@ type BillboardsClientProps = {
   formattedBillboards: BillboardColumn[];
   store: Store;
 };
+
+type CategoriesClientProps = {
+  formattedCategories: CategoryColumns[];
+  store: Store;
+};
 type CellActionProps = {
-  data: BillboardColumn;
+  data: BillboardColumn | CategoryColumns;
 };
 export interface ImageInputProps {
   name: string;
@@ -90,4 +107,8 @@ export type {
   BillboardsClientProps,
   CellActionProps,
   ApiListProps,
+  CategoriesClientProps,
+  CategoryIdProps,
+  CategoryPatchParams,
+  CategoryFormProps,
 };
