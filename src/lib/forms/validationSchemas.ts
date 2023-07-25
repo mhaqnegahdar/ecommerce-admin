@@ -13,4 +13,9 @@ const billboardSchema = object({
   imageUrl: string().required("Required!"),
 });
 
-export { storeSchema, storeSettingsSchema, billboardSchema };
+const categorySchema = object({
+  name: string().required("Required!"),
+  billboardId: string().required("Required!"),
+});
+
+export { storeSchema, storeSettingsSchema, billboardSchema, categorySchema };

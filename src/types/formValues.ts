@@ -13,6 +13,11 @@ type BillboardForm = {
   imageUrl: string;
 };
 
+type CategoryForm = {
+  name: string;
+  billboardId: string;
+};
+
 type OnSubmitParams = {
   setSubmitting: (value: boolean) => void;
   isSubmitting?: boolean;
@@ -20,4 +25,10 @@ type OnSubmitParams = {
 };
 
 // Export
-export type { OnSubmitParams, StoreForm, StoreSettingsForm, BillboardForm };
+export type {
+  OnSubmitParams,
+  StoreForm,
+  StoreSettingsForm,
+  BillboardForm,
+  CategoryForm,
+};

@@ -1,10 +1,11 @@
 // Types
 import {
   BillboardForm,
+  CategoryForm,
   StoreForm,
   StoreSettingsForm,
 } from "@/types/formValues";
-import { Billboard, Store } from "@prisma/client";
+import { Category, Billboard, Store } from "@prisma/client";
 
 const storeInit = {
   name: "",
@@ -23,4 +24,11 @@ const billboardInit = (billboard: Billboard | null): BillboardForm => {
   };
 };
 
-export { storeInit, storeSettingsInit, billboardInit };
+const categoryInit = (category: Category | null): CategoryForm => {
+  return {
+    name: category?.name || "",
+    billboardId: category?.billboardId || "",
+  };
+};
+
+export { storeInit, storeSettingsInit, billboardInit, categoryInit };
