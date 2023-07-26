@@ -1,6 +1,6 @@
-import { Billboard, Category, Store } from "@prisma/client";
+import { Billboard, Category, Size, Store } from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
-import { BillboardColumn, CategoryColumns } from "@/types/columns";
+import { BillboardColumn, CategoryColumns, SizeColumns } from "@/types/columns";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -20,6 +20,10 @@ type CategoryFormProps = {
   billboards: Billboard[] | null;
 };
 
+type SizeFormProps = {
+  size: Size | null;
+};
+
 // Pages
 type StoreIdProps = {
   params: { storeId: string };
@@ -35,9 +39,16 @@ type BillboardPatchParams = {
 type CategoryIdProps = {
   params: { categoryId: string; storeId: string };
 };
+type SizeIdProps = {
+  params: { sizeId: string; storeId: string };
+};
 
 type CategoryPatchParams = {
   params: { storeId: string; categoryId: string };
+};
+
+type SizePatchParams = {
+  params: { storeId: string; sizeId: string };
 };
 
 type ApiListProps = {
@@ -83,8 +94,14 @@ type CategoriesClientProps = {
   formattedCategories: CategoryColumns[];
   store: Store;
 };
+
+type SizesClientProps = {
+  formattedSizes: SizeColumns[];
+  store: Store;
+};
+
 type CellActionProps = {
-  data: BillboardColumn | CategoryColumns;
+  data: BillboardColumn | CategoryColumns | SizeColumns;
 };
 export interface ImageInputProps {
   name: string;
@@ -111,4 +128,8 @@ export type {
   CategoryIdProps,
   CategoryPatchParams,
   CategoryFormProps,
+  SizesClientProps,
+  SizeIdProps,
+  SizeFormProps,
+  SizePatchParams,
 };

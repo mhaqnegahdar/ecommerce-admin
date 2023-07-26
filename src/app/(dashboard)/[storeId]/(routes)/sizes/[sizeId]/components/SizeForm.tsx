@@ -17,55 +17,51 @@ import { Input } from "@/components/ui/inputs/Input";
 import { SelectInput } from "@/components/ui/inputs/SelectInput";
 
 // Types
-import { CategoryFormProps } from "@/types/props";
+import { SizeFormProps } from "@/types/props";
 
 // Icons
 import { Trash } from "lucide-react";
 
 // Data
-import { OnSubmitParams, CategoryForm } from "@/types/formValues";
-import { categoryInit } from "@/lib/forms/initialValues";
-import { categorySchema } from "@/lib/forms/validationSchemas";
+import { OnSubmitParams, SizeForm } from "@/types/formValues";
+import { sizeInit } from "@/lib/forms/initialValues";
+import { sizeSchema } from "@/lib/forms/validationSchemas";
 
-const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
+const SizeForm = ({ size }: SizeFormProps) => {
   const router = useRouter();
   const params = useParams();
   const dispatch = useAppDispatch();
 
-  const formattedBillboards = billboards?.map(({ id, label }) => {
-    return { value: id, label };
-  });
-
   const pageInit = useMemo(() => {
-    if (category) {
+    if (size) {
       return {
         reqMethod: "PATCH",
-        reqUrl: `/api/${params.storeId}/categories/${params.categoryId}`,
-        title: "Edit category",
-        description: "Edit a category",
-        toastMessage: "Category updated",
+        reqUrl: `/api/${params.storeId}/sizes/${params.sizeId}`,
+        title: "Edit size",
+        description: "Edit a size",
+        toastMessage: "Size updated",
         action: "Save changes",
       };
     } else {
       return {
         reqMethod: "POST",
-        reqUrl: `/api/${params.storeId}/categories`,
-        title: "Create category",
-        description: "Add a new category",
-        toastMessage: "Category created",
+        reqUrl: `/api/${params.storeId}/sizes`,
+        title: "Create size",
+        description: "Add a new size",
+        toastMessage: "Size created",
         action: "Create ",
       };
     }
-  }, [category, params.categoryId, params.storeId]);
+  }, [size, params.sizeId, params.storeId]);
 
   // States
   const formInit = useMemo(() => {
     return {
-      initialValues: categoryInit(category),
-      validationSchema: categorySchema,
-      id: "category_form",
+      initialValues: sizeInit(size),
+      validationSchema: sizeSchema,
+      id: "size_form",
       onSubmit: async (
-        values: CategoryForm,
+        values: SizeForm,
         { setSubmitting, resetForm }: OnSubmitParams
       ) => {
         await axios({
@@ -78,7 +74,7 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
 
             if (response.status == 200) {
               toast.success(`${pageInit.toastMessage}`);
-              router.push(`/${params.storeId}/categories`);
+              router.push(`/${params.storeId}/sizes`);
               router.refresh();
             }
           })
@@ -94,7 +90,7 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
       },
     };
   }, [
-    category,
+    size,
     router,
     pageInit.toastMessage,
     pageInit.reqUrl,
@@ -104,16 +100,15 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
 
   const deletePayload = useMemo(() => {
     return {
-      title: "Are you sure you want to delete this category?",
+      title: "Are you sure you want to delete this size?",
       description: "This action cannot be undone.",
       action: "delete",
-      api: `/api/${params.storeId}/categories/${params.categoryId}`,
-      successMessage: "Category deleted.",
-      failMessage:
-        "Make sure you removed all the categories using this category first.",
-      afterRoute: `/${params.storeId}/categories`,
+      api: `/api/${params.storeId}/sizes/${params.sizeId}`,
+      successMessage: "Size deleted.",
+      failMessage: "Make sure you removed all the sizes using this size first.",
+      afterRoute: `/${params.storeId}/sizes`,
     };
-  }, [params.storeId, params.categoryId]);
+  }, [params.storeId, params.sizeId]);
 
   return (
     <>
@@ -121,7 +116,7 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
         {/* Heading */}
         <Heading title={pageInit.title} description={pageInit.description} />
         {/* Delete Button */}
-        {category ? (
+        {size ? (
           <Button
             variant={"destructive"}
             size={"icon"}
@@ -142,16 +137,16 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
                   name="name"
                   type="text"
                   label="Name"
-                  placeholder="Category name"
+                  placeholder="Size name"
                   disabled={isSubmitting}
                 />
-                <SelectInput
-                  name="billboardId"
-                  label="Select a billboard"
-                  data={formattedBillboards || []}
-                  defaultValue={
-                    formattedBillboards ? formattedBillboards[0].value : ""
-                  }
+
+                <Input
+                  name="value"
+                  type="text"
+                  label="Value"
+                  placeholder="Size value"
+                  disabled={isSubmitting}
                 />
 
                 {/* Buttons */}
@@ -173,4 +168,4 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
   );
 };
 
-export default CategoryForm;
+export default SizeForm;

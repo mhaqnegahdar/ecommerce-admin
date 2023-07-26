@@ -75,6 +75,7 @@ const BillboardForm = ({ billboard }: BillboardFormProps) => {
             if (response.status == 200) {
               toast.success(`${pageInit.toastMessage}`);
               router.push(`/${params.storeId}/billboards`);
+              router.refresh();
             }
           })
           .catch(error => {

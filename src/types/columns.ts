@@ -11,4 +11,11 @@ type CategoryColumns = {
   createdAt: string;
 };
 
-export type { BillboardColumn, CategoryColumns };
+type SizeColumns = {
+  id: string;
+  name: string;
+  value: string;
+  createdAt: string;
+};
+
+export type { BillboardColumn, CategoryColumns, SizeColumns };

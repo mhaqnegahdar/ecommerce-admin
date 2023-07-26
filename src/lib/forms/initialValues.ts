@@ -2,10 +2,11 @@
 import {
   BillboardForm,
   CategoryForm,
+  SizeForm,
   StoreForm,
   StoreSettingsForm,
 } from "@/types/formValues";
-import { Category, Billboard, Store } from "@prisma/client";
+import { Category, Billboard, Store, Size } from "@prisma/client";
 
 const storeInit = {
   name: "",
@@ -31,4 +32,11 @@ const categoryInit = (category: Category | null): CategoryForm => {
   };
 };
 
-export { storeInit, storeSettingsInit, billboardInit, categoryInit };
+const sizeInit = (size: Size | null): SizeForm => {
+  return {
+    name: size?.name || "",
+    value: size?.value || "",
+  };
+};
+
+export { storeInit, storeSettingsInit, billboardInit, categoryInit, sizeInit };

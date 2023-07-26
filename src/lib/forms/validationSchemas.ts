@@ -18,4 +18,15 @@ const categorySchema = object({
   billboardId: string().required("Required!"),
 });
 
-export { storeSchema, storeSettingsSchema, billboardSchema, categorySchema };
+const sizeSchema = object({
+  name: string().required("Required!"),
+  value: string().required("Required!"),
+});
+
+export {
+  storeSchema,
+  storeSettingsSchema,
+  billboardSchema,
+  categorySchema,
+  sizeSchema,
+};
