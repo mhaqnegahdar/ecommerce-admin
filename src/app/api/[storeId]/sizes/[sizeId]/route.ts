@@ -3,9 +3,9 @@ import { prisma } from "@/lib/prismadb";
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 // Types
-import { CategoryPatchParams } from "@/types/props";
+import { SizePatchParams } from "@/types/props";
 
-export async function PATCH(req: Request, { params }: CategoryPatchParams) {
+export async function PATCH(req: Request, { params }: SizePatchParams) {
   try {
     // User Is authenticated
     const { userId } = auth();
@@ -14,19 +14,19 @@ export async function PATCH(req: Request, { params }: CategoryPatchParams) {
     }
 
     // Getting Body and Params
-    const { storeId, categoryId } = params;
-    const { name, billboardId } = await req.json();
+    const { storeId, sizeId } = params;
+    const { name, value } = await req.json();
 
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
     }
 
-    if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
+    if (!value) {
+      return new NextResponse("Value Id is required", { status: 400 });
     }
 
-    if (!categoryId) {
-      return new NextResponse("Category is required", { status: 400 });
+    if (!sizeId) {
+      return new NextResponse("Size is required", { status: 400 });
     }
 
     // Is user authorized
@@ -39,24 +39,24 @@ export async function PATCH(req: Request, { params }: CategoryPatchParams) {
     }
 
     // Update Category
-    const category = await prisma.category.updateMany({
+    const size = await prisma.size.updateMany({
       where: {
-        id: categoryId,
+        id: sizeId,
       },
       data: {
         name,
-        billboardId,
+        value,
       },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(size);
   } catch (error) {
     console.log("[CATEGORY_PATCH]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
 
-export async function DELETE(_req: Request, { params }: CategoryPatchParams) {
+export async function DELETE(_req: Request, { params }: SizePatchParams) {
   try {
     // Authorization using clerck
     const { userId } = auth();
@@ -65,7 +65,7 @@ export async function DELETE(_req: Request, { params }: CategoryPatchParams) {
     }
 
     // Getting Params
-    const { storeId, categoryId } = params;
+    const { storeId, sizeId } = params;
 
     // Is user authorized
     const storeByUserId = await prisma.store.findFirst({
@@ -77,28 +77,28 @@ export async function DELETE(_req: Request, { params }: CategoryPatchParams) {
     }
 
     // Delete Category
-    const category = await prisma.category.deleteMany({
-      where: { id: categoryId, storeId },
+    const size = await prisma.size.deleteMany({
+      where: { id: sizeId, storeId },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(size);
   } catch (error) {
     console.log("[CATEGORY_DELETE]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
 
-export async function GET(_req: Request, { params }: CategoryPatchParams) {
+export async function GET(_req: Request, { params }: SizePatchParams) {
   try {
     // Getting Params
-    const { categoryId } = params;
+    const { sizeId } = params;
 
     // Get Category
-    const category = await prisma.category.findFirst({
-      where: { id: categoryId },
+    const size = await prisma.size.findFirst({
+      where: { id: sizeId },
     });
 
-    return NextResponse.json(category);
+    return NextResponse.json(size);
   } catch (error) {
     console.log("[CATEGORY_GET]", error);
     return new NextResponse("Internal error", { status: 500 });

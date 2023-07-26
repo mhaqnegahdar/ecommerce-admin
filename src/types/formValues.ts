@@ -18,6 +18,11 @@ type CategoryForm = {
   billboardId: string;
 };
 
+type SizeForm = {
+  name: string;
+  value: string;
+};
+
 type OnSubmitParams = {
   setSubmitting: (value: boolean) => void;
   isSubmitting?: boolean;
@@ -31,4 +36,5 @@ export type {
   StoreSettingsForm,
   BillboardForm,
   CategoryForm,
+  SizeForm,
 };

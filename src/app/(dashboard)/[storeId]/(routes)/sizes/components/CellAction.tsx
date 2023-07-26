@@ -32,14 +32,13 @@ const CellAction = ({ data }: CellActionProps) => {
   // States
   const deletePayload = useMemo(() => {
     return {
-      title: "Are you sure you want to delete this category?",
+      title: "Are you sure you want to delete this size?",
       description: "This action cannot be undone.",
       action: "delete",
-      api: `/api/${params.storeId}/categories/${data.id}`,
-      successMessage: "Category deleted.",
-      failMessage:
-        "Make sure you removed all the categories using this category first.",
-      afterRoute: `/${params.storeId}/categories`,
+      api: `/api/${params.storeId}/sizes/${data.id}`,
+      successMessage: "Size deleted.",
+      failMessage: "Make sure you removed all the sizes using this size first.",
+      afterRoute: `/${params.storeId}/sizes`,
     };
   }, [params.storeId, data.id]);
 
@@ -55,15 +54,13 @@ const CellAction = ({ data }: CellActionProps) => {
         <DropdownMenuLabel>Actions</DropdownMenuLabel>
         <DropdownMenuItem
           className="cursor-pointer"
-          onClick={() => onCopy(data.id, "Category Id")}
+          onClick={() => onCopy(data.id, "Size Id")}
         >
           <Copy className="mr-2 h-4 w-4" /> Copy Id
         </DropdownMenuItem>
         <DropdownMenuItem
           className="cursor-pointer"
-          onClick={() =>
-            router.push(`/${params.storeId}/categories/${data.id}`)
-          }
+          onClick={() => router.push(`/${params.storeId}/sizes/${data.id}`)}
         >
           <Edit className="mr-2 h-4 w-4" /> Update
         </DropdownMenuItem>
