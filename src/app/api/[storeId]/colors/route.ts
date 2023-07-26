@@ -40,7 +40,7 @@ export async function POST(req: Request, { params }: StoreIdProps) {
       return new NextResponse("Unauthorized", { status: 405 });
     }
 
-    const size = await prisma.size.create({
+    const color = await prisma.color.create({
       data: {
         name,
         value,
@@ -48,9 +48,9 @@ export async function POST(req: Request, { params }: StoreIdProps) {
       },
     });
 
-    return NextResponse.json(size);
+    return NextResponse.json(color);
   } catch (error) {
-    console.log("[SIZE_POST]", error);
+    console.log("[COLOR_POST]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }
@@ -61,15 +61,15 @@ export async function GET(_req: Request, { params }: StoreIdProps) {
       return new NextResponse("Store id is required", { status: 400 });
     }
 
-    const sizes = await prisma.size.findMany({
+    const colors = await prisma.color.findMany({
       where: {
         storeId: params.storeId,
       },
     });
 
-    return NextResponse.json(sizes);
+    return NextResponse.json(colors);
   } catch (error) {
-    console.log("[SIZES_GET]", error);
+    console.log("[COLORS_GET]", error);
     return new NextResponse("Internal error", { status: 500 });
   }
 }

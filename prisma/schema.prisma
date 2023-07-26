@@ -21,7 +21,8 @@ model Store {
   // Relations
   billboards Billboard[] @relation("StoreToBillboard")
   Categories Category[] @relation("StoreToCategory")
-  Sizes Size[] @relation("StoreToSize")
+  Sizes      Size[] @relation("StoreToSize")
+  Colors     Color[] @relation("StoreToColor")
 }
 
 model Billboard{
@@ -41,13 +42,13 @@ model Billboard{
 
 model Category{
   id         String      @id @default(uuid())
-  name      String
+  name       String
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
   // Relations
-  storeId    String
-  store      Store @relation("StoreToCategory",fields:[storeId],references:[id])
+  storeId        String
+  store          Store @relation("StoreToCategory",fields:[storeId],references:[id])
   billboardId    String
   billboard      Billboard @relation(fields:[billboardId],references:[id])
 
@@ -65,6 +66,20 @@ model Size{
   // Relations
   storeId    String
   store      Store @relation("StoreToSize",fields:[storeId],references:[id])
+
+@@index([storeId])
+}
+
+model Color{
+  id         String      @id @default(uuid())
+  name       String
+  value      String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  // Relations
+  storeId    String
+  store      Store @relation("StoreToColor",fields:[storeId],references:[id])
 
 @@index([storeId])
 }

@@ -23,10 +23,16 @@ const sizeSchema = object({
   value: string().required("Required!"),
 });
 
+const colorSchema = object({
+  name: string().required("Required!"),
+  value: string().required("Required!"),
+});
+
 export {
   storeSchema,
   storeSettingsSchema,
   billboardSchema,
   categorySchema,
   sizeSchema,
+  colorSchema,
 };

@@ -16,51 +16,51 @@ import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/inputs/Input";
 
 // Types
-import { SizeFormProps } from "@/types/props";
+import { ColorFormProps } from "@/types/props";
 
 // Icons
 import { Trash } from "lucide-react";
 
 // Data
-import { OnSubmitParams, SizeForm } from "@/types/formValues";
-import { sizeInit } from "@/lib/forms/initialValues";
-import { sizeSchema } from "@/lib/forms/validationSchemas";
+import { OnSubmitParams, ColorForm } from "@/types/formValues";
+import { colorInit } from "@/lib/forms/initialValues";
+import { colorSchema } from "@/lib/forms/validationSchemas";
 
-const SizeForm = ({ size }: SizeFormProps) => {
+const ColorForm = ({ color }: ColorFormProps) => {
   const router = useRouter();
   const params = useParams();
   const dispatch = useAppDispatch();
 
   const pageInit = useMemo(() => {
-    if (size) {
+    if (color) {
       return {
         reqMethod: "PATCH",
-        reqUrl: `/api/${params.storeId}/sizes/${params.sizeId}`,
-        title: "Edit size",
-        description: "Edit a size",
-        toastMessage: "Size updated",
+        reqUrl: `/api/${params.storeId}/colors/${params.colorId}`,
+        title: "Edit color",
+        description: "Edit a color",
+        toastMessage: "Color updated",
         action: "Save changes",
       };
     } else {
       return {
         reqMethod: "POST",
-        reqUrl: `/api/${params.storeId}/sizes`,
-        title: "Create size",
-        description: "Add a new size",
-        toastMessage: "Size created",
+        reqUrl: `/api/${params.storeId}/colors`,
+        title: "Create color",
+        description: "Add a new color",
+        toastMessage: "Color created",
         action: "Create ",
       };
     }
-  }, [size, params.sizeId, params.storeId]);
+  }, [color, params.colorId, params.storeId]);
 
   // States
   const formInit = useMemo(() => {
     return {
-      initialValues: sizeInit(size),
-      validationSchema: sizeSchema,
-      id: "size_form",
+      initialValues: colorInit(color),
+      validationSchema: colorSchema,
+      id: "color_form",
       onSubmit: async (
-        values: SizeForm,
+        values: ColorForm,
         { setSubmitting, resetForm }: OnSubmitParams
       ) => {
         await axios({
@@ -73,7 +73,7 @@ const SizeForm = ({ size }: SizeFormProps) => {
 
             if (response.status == 200) {
               toast.success(`${pageInit.toastMessage}`);
-              router.push(`/${params.storeId}/sizes`);
+              router.push(`/${params.storeId}/colors`);
               router.refresh();
             }
           })
@@ -89,7 +89,7 @@ const SizeForm = ({ size }: SizeFormProps) => {
       },
     };
   }, [
-    size,
+    color,
     router,
     pageInit.toastMessage,
     pageInit.reqUrl,
@@ -99,15 +99,16 @@ const SizeForm = ({ size }: SizeFormProps) => {
 
   const deletePayload = useMemo(() => {
     return {
-      title: "Are you sure you want to delete this size?",
+      title: "Are you sure you want to delete this color?",
       description: "This action cannot be undone.",
       action: "delete",
-      api: `/api/${params.storeId}/sizes/${params.sizeId}`,
-      successMessage: "Size deleted.",
-      failMessage: "Make sure you removed all the sizes using this size first.",
-      afterRoute: `/${params.storeId}/sizes`,
+      api: `/api/${params.storeId}/colors/${params.colorId}`,
+      successMessage: "Color deleted.",
+      failMessage:
+        "Make sure you removed all the colors using this color first.",
+      afterRoute: `/${params.storeId}/colors`,
     };
-  }, [params.storeId, params.sizeId]);
+  }, [params.storeId, params.colorId]);
 
   return (
     <>
@@ -115,10 +116,10 @@ const SizeForm = ({ size }: SizeFormProps) => {
         {/* Heading */}
         <Heading title={pageInit.title} description={pageInit.description} />
         {/* Delete Button */}
-        {size ? (
+        {color ? (
           <Button
             variant={"destructive"}
-            size={"icon"}
+            color={"icon"}
             onClick={() => dispatch(onOpen(deletePayload))}
           >
             <Trash className="w-4 h-4" />
@@ -136,15 +137,15 @@ const SizeForm = ({ size }: SizeFormProps) => {
                   name="name"
                   type="text"
                   label="Name"
-                  placeholder="Size name"
+                  placeholder="Color name"
                   disabled={isSubmitting}
                 />
 
                 <Input
                   name="value"
-                  type="text"
+                  type="color"
                   label="Value"
-                  placeholder="Size value"
+                  placeholder="Color value"
                   disabled={isSubmitting}
                 />
 
@@ -167,4 +168,4 @@ const SizeForm = ({ size }: SizeFormProps) => {
   );
 };
 
-export default SizeForm;
+export default ColorForm;
