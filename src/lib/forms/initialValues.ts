@@ -6,7 +6,7 @@ import {
   StoreForm,
   StoreSettingsForm,
 } from "@/types/formValues";
-import { Category, Billboard, Store, Size } from "@prisma/client";
+import { Category, Billboard, Store, Size, Color } from "@prisma/client";
 
 const storeInit = {
   name: "",
@@ -39,4 +39,18 @@ const sizeInit = (size: Size | null): SizeForm => {
   };
 };
 
-export { storeInit, storeSettingsInit, billboardInit, categoryInit, sizeInit };
+const colorInit = (color: Color | null): SizeForm => {
+  return {
+    name: color?.name || "",
+    value: color?.value || "#111",
+  };
+};
+
+export {
+  storeInit,
+  storeSettingsInit,
+  billboardInit,
+  categoryInit,
+  sizeInit,
+  colorInit,
+};

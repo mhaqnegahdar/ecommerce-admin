@@ -23,6 +23,11 @@ type SizeForm = {
   value: string;
 };
 
+type ColorForm = {
+  name: string;
+  value: string;
+};
+
 type OnSubmitParams = {
   setSubmitting: (value: boolean) => void;
   isSubmitting?: boolean;
@@ -37,4 +42,5 @@ export type {
   BillboardForm,
   CategoryForm,
   SizeForm,
+  ColorForm,
 };

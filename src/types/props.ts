@@ -1,6 +1,11 @@
-import { Billboard, Category, Size, Store } from "@prisma/client";
+import { Billboard, Category, Color, Size, Store } from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
-import { BillboardColumn, CategoryColumns, SizeColumns } from "@/types/columns";
+import {
+  BillboardColumn,
+  CategoryColumns,
+  ColorColumns,
+  SizeColumns,
+} from "@/types/columns";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
   typeof PopoverTrigger
@@ -24,6 +29,10 @@ type SizeFormProps = {
   size: Size | null;
 };
 
+type ColorFormProps = {
+  color: Color | null;
+};
+
 // Pages
 type StoreIdProps = {
   params: { storeId: string };
@@ -42,6 +51,9 @@ type CategoryIdProps = {
 type SizeIdProps = {
   params: { sizeId: string; storeId: string };
 };
+type ColorIdProps = {
+  params: { colorId: string; storeId: string };
+};
 
 type CategoryPatchParams = {
   params: { storeId: string; categoryId: string };
@@ -49,6 +61,10 @@ type CategoryPatchParams = {
 
 type SizePatchParams = {
   params: { storeId: string; sizeId: string };
+};
+
+type ColorPatchParams = {
+  params: { storeId: string; colorId: string };
 };
 
 type ApiListProps = {
@@ -100,8 +116,13 @@ type SizesClientProps = {
   store: Store;
 };
 
+type ColorsClientProps = {
+  formattedColors: ColorColumns[];
+  store: Store;
+};
+
 type CellActionProps = {
-  data: BillboardColumn | CategoryColumns | SizeColumns;
+  data: BillboardColumn | CategoryColumns | SizeColumns | ColorColumns;
 };
 export interface ImageInputProps {
   name: string;
@@ -132,4 +153,8 @@ export type {
   SizeIdProps,
   SizeFormProps,
   SizePatchParams,
+  ColorsClientProps,
+  ColorIdProps,
+  ColorFormProps,
+  ColorPatchParams,
 };
