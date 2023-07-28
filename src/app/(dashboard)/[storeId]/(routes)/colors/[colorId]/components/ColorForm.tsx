@@ -105,7 +105,7 @@ const ColorForm = ({ color }: ColorFormProps) => {
       api: `/api/${params.storeId}/colors/${params.colorId}`,
       successMessage: "Color deleted.",
       failMessage:
-        "Make sure you removed all the colors using this color first.",
+        "Make sure you removed all the products using this color first.",
       afterRoute: `/${params.storeId}/colors`,
     };
   }, [params.storeId, params.colorId]);

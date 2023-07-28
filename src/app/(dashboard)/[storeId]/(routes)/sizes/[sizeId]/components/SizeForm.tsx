@@ -104,7 +104,8 @@ const SizeForm = ({ size }: SizeFormProps) => {
       action: "delete",
       api: `/api/${params.storeId}/sizes/${params.sizeId}`,
       successMessage: "Size deleted.",
-      failMessage: "Make sure you removed all the sizes using this size first.",
+      failMessage:
+        "Make sure you removed all the Products using this size first.",
       afterRoute: `/${params.storeId}/sizes`,
     };
   }, [params.storeId, params.sizeId]);

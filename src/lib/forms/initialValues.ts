@@ -2,11 +2,21 @@
 import {
   BillboardForm,
   CategoryForm,
+  ProductForm,
   SizeForm,
   StoreForm,
   StoreSettingsForm,
 } from "@/types/formValues";
-import { Category, Billboard, Store, Size, Color } from "@prisma/client";
+import { ProductFormProps } from "@/types/props";
+import {
+  Category,
+  Billboard,
+  Store,
+  Size,
+  Color,
+  Product,
+  Image,
+} from "@prisma/client";
 
 const storeInit = {
   name: "",
@@ -32,6 +42,21 @@ const categoryInit = (category: Category | null): CategoryForm => {
   };
 };
 
+const productInit = (
+  product: (Product & { images: Image[] }) | null
+): ProductForm => {
+  return {
+    name: product?.name || "",
+    images: product?.images || [],
+    price: parseFloat(String(product?.price)) || 0,
+    categoryId: product?.categoryId || "",
+    colorId: product?.colorId || "",
+    sizeId: product?.sizeId || "",
+    isFeatured: product?.isFeatured || false,
+    isArchived: product?.isArchived || false,
+  };
+};
+
 const sizeInit = (size: Size | null): SizeForm => {
   return {
     name: size?.name || "",
@@ -53,4 +78,5 @@ export {
   categoryInit,
   sizeInit,
   colorInit,
+  productInit,
 };

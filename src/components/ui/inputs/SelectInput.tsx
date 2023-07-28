@@ -40,7 +40,6 @@ const SelectInput = React.forwardRef<HTMLInputElement, SelectInputProps>(
         >
           {({ field, form, meta }: FieldProps) => {
             const { setFieldValue } = form;
-            console.log(form);
             return (
               <>
                 <Select

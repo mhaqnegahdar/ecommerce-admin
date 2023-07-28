@@ -11,3 +11,8 @@ export const onCopy = (copyText: string, copyName: string) => {
   navigator.clipboard.writeText(copyText);
   toast.success(`${copyName} copied to the clipboard.`);
 };
+
+export const currancyFormatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+});

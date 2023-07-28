@@ -1,4 +1,5 @@
-import { Store } from "@prisma/client";
+import { Image, Store } from "@prisma/client";
+import { Decimal } from "@prisma/client/runtime/library";
 
 type StoreForm = {
   name: string;
@@ -28,6 +29,17 @@ type ColorForm = {
   value: string;
 };
 
+type ProductForm = {
+  name: string;
+  images: Image[];
+  price: number | Decimal;
+  categoryId: string;
+  colorId: string;
+  sizeId: string;
+  isFeatured: boolean;
+  isArchived: boolean;
+};
+
 type OnSubmitParams = {
   setSubmitting: (value: boolean) => void;
   isSubmitting?: boolean;
@@ -43,4 +55,5 @@ export type {
   CategoryForm,
   SizeForm,
   ColorForm,
+  ProductForm,
 };
