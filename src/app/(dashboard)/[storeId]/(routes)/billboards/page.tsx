@@ -30,6 +30,9 @@ const Billboards = async ({ params }: StoreIdProps) => {
     where: {
       storeId: params.storeId,
     },
+    orderBy: {
+      createdAt: "desc",
+    },
   });
 
   // if store did not exist

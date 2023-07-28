@@ -14,7 +14,7 @@ import Heading from "@/components/ui/Heading";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Input } from "@/components/ui/inputs/Input";
-import ImageInput from "@/components/ui/ImageInput";
+import ImageInput from "@/components/ui/inputs/ImageInput";
 
 // Types
 import { BillboardFormProps } from "@/types/props";
@@ -138,6 +138,7 @@ const BillboardForm = ({ billboard }: BillboardFormProps) => {
                   name="imageUrl"
                   label="Background image"
                   disabled={isSubmitting}
+                  multiChoice={false}
                 />
                 <Input
                   name="label"

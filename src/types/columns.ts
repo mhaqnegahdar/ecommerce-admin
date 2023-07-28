@@ -25,4 +25,22 @@ type ColorColumns = {
   createdAt: string;
 };
 
-export type { BillboardColumn, CategoryColumns, SizeColumns, ColorColumns };
+type ProductColumns = {
+  id: string;
+  name: string;
+  price: string;
+  size: string;
+  color: string;
+  category: string;
+  isFeatured: boolean;
+  isArchived: boolean;
+  createdAt: string;
+};
+
+export type {
+  BillboardColumn,
+  CategoryColumns,
+  SizeColumns,
+  ColorColumns,
+  ProductColumns,
+};

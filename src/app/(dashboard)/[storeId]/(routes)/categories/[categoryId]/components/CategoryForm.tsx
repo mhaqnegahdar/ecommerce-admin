@@ -110,7 +110,7 @@ const CategoryForm = ({ category, billboards }: CategoryFormProps) => {
       api: `/api/${params.storeId}/categories/${params.categoryId}`,
       successMessage: "Category deleted.",
       failMessage:
-        "Make sure you removed all the categories using this category first.",
+        "Make sure you removed all the products using this category first.",
       afterRoute: `/${params.storeId}/categories`,
     };
   }, [params.storeId, params.categoryId]);

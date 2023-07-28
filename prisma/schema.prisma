@@ -23,6 +23,7 @@ model Store {
   Categories Category[] @relation("StoreToCategory")
   Sizes      Size[] @relation("StoreToSize")
   Colors     Color[] @relation("StoreToColor")
+  Products   Product[] @relation("StoreToProduct")
 }
 
 model Billboard{
@@ -43,6 +44,7 @@ model Billboard{
 model Category{
   id         String      @id @default(uuid())
   name       String
+  products   Product[]   @relation("CategoryToProduct")
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
@@ -60,6 +62,7 @@ model Size{
   id         String      @id @default(uuid())
   name       String
   value      String
+  products   Product[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
@@ -74,6 +77,7 @@ model Color{
   id         String      @id @default(uuid())
   name       String
   value      String
+  products   Product[]
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 
@@ -82,4 +86,44 @@ model Color{
   store      Store @relation("StoreToColor",fields:[storeId],references:[id])
 
 @@index([storeId])
+}
+
+model Product{
+  id         String      @id @default(uuid())
+  name       String
+  price      Decimal
+  isFeatured Boolean @default(false)
+  isArchived Boolean @default(false)
+  images     Image[]
+
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  // Relations
+  storeId       String
+  store         Store @relation("StoreToProduct",fields:[storeId],references:[id])
+  categoryId    String
+  category      Category @relation("CategoryToProduct",fields:[categoryId],references:[id])
+  sizeId        String
+  size          Size @relation(fields:[sizeId],references:[id])
+  colorId       String
+  color         Color @relation(fields:[colorId],references:[id])
+
+@@index([storeId])
+@@index([categoryId])
+@@index([sizeId])
+@@index([colorId])
+}
+
+model Image{
+  id         String      @id @default(uuid())
+  url        String
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  // Relations
+  productId    String
+  product      Product @relation(fields:[productId],references:[id],onDelete: Cascade)
+
+@@index([productId])
 }

@@ -1,9 +1,18 @@
-import { Billboard, Category, Color, Size, Store } from "@prisma/client";
+import {
+  Billboard,
+  Category,
+  Color,
+  Image,
+  Product,
+  Size,
+  Store,
+} from "@prisma/client";
 import { PopoverTrigger } from "@/components/ui/popover";
 import {
   BillboardColumn,
   CategoryColumns,
   ColorColumns,
+  ProductColumns,
   SizeColumns,
 } from "@/types/columns";
 
@@ -25,6 +34,12 @@ type CategoryFormProps = {
   billboards: Billboard[] | null;
 };
 
+type ProductFormProps = {
+  product: (Product & { images: Image[] }) | null;
+  sizes: Size[] | null;
+  colors: Color[] | null;
+  categories: Category[] | null;
+};
 type SizeFormProps = {
   size: Size | null;
 };
@@ -41,9 +56,16 @@ type StoreIdProps = {
 type BillboardIdProps = {
   params: { billboardId: string };
 };
+type ProductIdProps = {
+  params: { productId: string; storeId: string };
+};
 
 type BillboardPatchParams = {
   params: { storeId: string; billboardId: string };
+};
+
+type ProductPatchParams = {
+  params: { storeId: string; productId: string };
 };
 type CategoryIdProps = {
   params: { categoryId: string; storeId: string };
@@ -121,13 +143,24 @@ type ColorsClientProps = {
   store: Store;
 };
 
+type ProductsClientProps = {
+  formattedProducts: ProductColumns[];
+  store: Store;
+};
+
 type CellActionProps = {
-  data: BillboardColumn | CategoryColumns | SizeColumns | ColorColumns;
+  data:
+    | BillboardColumn
+    | CategoryColumns
+    | SizeColumns
+    | ColorColumns
+    | ProductColumns;
 };
 export interface ImageInputProps {
   name: string;
   label: string;
   disabled: boolean;
+  multiChoice: boolean;
 }
 
 export type {
@@ -157,4 +190,8 @@ export type {
   ColorIdProps,
   ColorFormProps,
   ColorPatchParams,
+  ProductsClientProps,
+  ProductIdProps,
+  ProductFormProps,
+  ProductPatchParams,
 };
