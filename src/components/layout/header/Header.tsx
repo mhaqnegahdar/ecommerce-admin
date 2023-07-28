@@ -5,8 +5,9 @@ import { redirect } from "next/navigation";
 
 // Components
 import { UserButton } from "@clerk/nextjs";
-import NavBar from "./NavBar";
 import StoreSwitcher from "./StoreSwitcher";
+import MobileNavBar from "./MobileNavBar copy";
+import DesktopNavBar from "./MobileNavBar";
 
 const Header = async () => {
   const { userId } = auth();
@@ -26,8 +27,9 @@ const Header = async () => {
   return (
     <header className="border-b ">
       <div className="flex gap-4 h-16 items-center px-4">
+        <MobileNavBar />
         <StoreSwitcher items={stores} />
-        <NavBar />
+        <DesktopNavBar />
         <div className="ms-auto flex gap-4 items-center">
           <UserButton afterSignOutUrl="/" />
         </div>

@@ -1,0 +1,140 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table Store {
+  id String [pk]
+  name String [not null]
+  userId String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  billboards Billboard [not null]
+  Categories Category [not null]
+  Sizes Size [not null]
+  Colors Color [not null]
+  Products Product [not null]
+  Orders Order [not null]
+}
+
+Table Billboard {
+  id String [pk]
+  label String [not null]
+  imageUrl String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  storeId String [not null]
+  store Store [not null]
+  categories Category [not null]
+}
+
+Table Category {
+  id String [pk]
+  name String [not null]
+  products Product [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  storeId String [not null]
+  store Store [not null]
+  billboardId String [not null]
+  billboard Billboard [not null]
+}
+
+Table Size {
+  id String [pk]
+  name String [not null]
+  value String [not null]
+  products Product [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  storeId String [not null]
+  store Store [not null]
+}
+
+Table Color {
+  id String [pk]
+  name String [not null]
+  value String [not null]
+  products Product [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  storeId String [not null]
+  store Store [not null]
+}
+
+Table Product {
+  id String [pk]
+  name String [not null]
+  price Decimal [not null]
+  isFeatured Boolean [not null, default: false]
+  isArchived Boolean [not null, default: false]
+  images Image [not null]
+  orderItems OrderItem [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  storeId String [not null]
+  store Store [not null]
+  categoryId String [not null]
+  category Category [not null]
+  sizeId String [not null]
+  size Size [not null]
+  colorId String [not null]
+  color Color [not null]
+}
+
+Table Image {
+  id String [pk]
+  url String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  productId String [not null]
+  product Product [not null]
+}
+
+Table Order {
+  id String [pk]
+  isPaid Boolean [not null, default: false]
+  phone String [not null, default: '']
+  address String [not null, default: '']
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  orderItems OrderItem [not null]
+  storeId String [not null]
+  store Store [not null]
+}
+
+Table OrderItem {
+  id String [pk]
+  url String [not null]
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  orderId String [not null]
+  order Order [not null]
+  productId String [not null]
+  product Product [not null]
+}
+
+Ref: Billboard.storeId > Store.id
+
+Ref: Category.storeId > Store.id
+
+Ref: Category.billboardId > Billboard.id
+
+Ref: Size.storeId > Store.id
+
+Ref: Color.storeId > Store.id
+
+Ref: Product.storeId > Store.id
+
+Ref: Product.categoryId > Category.id
+
+Ref: Product.sizeId > Size.id
+
+Ref: Product.colorId > Color.id
+
+Ref: Image.productId > Product.id [delete: Cascade]
+
+Ref: Order.storeId > Store.id
+
+Ref: OrderItem.orderId > Order.id
+
+Ref: OrderItem.productId > Product.id

@@ -37,10 +37,21 @@ type ProductColumns = {
   createdAt: string;
 };
 
+type OrderColumns = {
+  id: string;
+  phone: string;
+  address: string;
+  products: string;
+  isPaid: boolean;
+  totalPrice: string;
+  createdAt: string;
+};
+
 export type {
   BillboardColumn,
   CategoryColumns,
   SizeColumns,
   ColorColumns,
   ProductColumns,
+  OrderColumns,
 };
