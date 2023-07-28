@@ -14,6 +14,7 @@ import {
   ColorColumns,
   ProductColumns,
   SizeColumns,
+  OrderColumns,
 } from "@/types/columns";
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<
@@ -128,6 +129,11 @@ type BillboardsClientProps = {
   store: Store;
 };
 
+type OrdersClientProps = {
+  formattedOrders: OrderColumns[];
+  store: Store;
+};
+
 type CategoriesClientProps = {
   formattedCategories: CategoryColumns[];
   store: Store;
@@ -194,4 +200,5 @@ export type {
   ProductIdProps,
   ProductFormProps,
   ProductPatchParams,
+  OrdersClientProps,
 };
