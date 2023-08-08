@@ -4,6 +4,8 @@ This is a practical **Ecommerce Admin** project using [Next.js](https://nextjs.o
 
 Explore the E-commerce [demo](https://maxjn-ecommerce.vercel.app/) and its Admin [demo](https://maxjn-ecommerce-admin.vercel.app/) for better understanding'.
 
+You can also take a look at the project's store [repo](https://github.com/maxjn/ecommerce-store) if you want.
+
 Database vusioalized ERD [here](https://dbdiagram.io/d/64c3cd7d02bd1c4a5ede3c37).
 
 ## Technologies

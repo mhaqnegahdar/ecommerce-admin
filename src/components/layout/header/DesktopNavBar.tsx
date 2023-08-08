@@ -18,7 +18,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-const MobileNavBar = () => {
+const DesktopNavBar = () => {
   const pathname = usePathname();
   const params = useParams();
 
@@ -76,27 +76,27 @@ const MobileNavBar = () => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        {/* Mbiel Menu */}
-        <NavigationMenuItem className="block lg:hidden">
-          <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
-          <NavigationMenuContent className="">
-            <ul className="grid w-[300px]  gap-3 p-4 md:w-[500px] grid-cols-2 lg:w-[600px]  -left-1/2">
-              {routes.map(route => (
-                <ListItem
-                  className=""
-                  key={route.href}
-                  title={route.label}
-                  href={route.href}
-                >
-                  {route.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+        {/* Deskop Menu */}
+        {routes.map(({ href, label, active }) => (
+          <NavigationMenuItem key={href} className="hidden lg:block">
+            <Link href={href} legacyBehavior passHref>
+              <NavigationMenuLink
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-primary",
+                  active
+                    ? "text-black dark:text-white"
+                    : "text-muted-foreground",
+                  navigationMenuTriggerStyle()
+                )}
+              >
+                {label}
+              </NavigationMenuLink>
+            </Link>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );
 };
 
-export default MobileNavBar;
+export default DesktopNavBar;

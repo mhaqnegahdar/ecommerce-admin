@@ -96,6 +96,9 @@ export async function GET(_req: Request, { params }: CategoryPatchParams) {
     // Get Category
     const category = await prisma.category.findFirst({
       where: { id: categoryId },
+      include: {
+        billboard: true,
+      },
     });
 
     return NextResponse.json(category);

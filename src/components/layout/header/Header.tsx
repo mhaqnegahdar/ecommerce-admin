@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 
 // Components
 import { UserButton } from "@clerk/nextjs";
-import StoreSwitcher from "./StoreSwitcher";
-import MobileNavBar from "./MobileNavBar copy";
-import DesktopNavBar from "./MobileNavBar";
+import StoreSwitcher from "@/components/layout/header/StoreSwitcher";
+import DesktopNavBar from "@/components/layout/header/DesktopNavBar";
+import MobileNavBar from "@/components/layout/header/MobileNavBar";
 
 const Header = async () => {
   const { userId } = auth();
