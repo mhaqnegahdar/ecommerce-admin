@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs";
 // Types
 import { ProductPatchParams } from "@/types/props";
+import { Image } from "@prisma/client";
 
 export async function PATCH(req: Request, { params }: ProductPatchParams) {
   try {
@@ -100,7 +101,7 @@ export async function PATCH(req: Request, { params }: ProductPatchParams) {
       data: {
         images: {
           createMany: {
-            data: [...images.map(({url})=>({url}))],
+            data: [...images.map(({ url }: Image) => ({ url }))],
           },
         },
       },
