@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ContainerProps) {
   return (
-    <OuterProviders attribute="class" defaultTheme="system" enableSystem>
+    <OuterProviders>
       <html lang="en">
         <body className={inter.className} suppressHydrationWarning={true}>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>

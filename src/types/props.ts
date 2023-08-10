@@ -97,9 +97,6 @@ type ApiListProps = {
 // Layouts
 type ContainerProps = {
   children: React.ReactNode;
-  enableSystem?: boolean;
-  defaultTheme?: string;
-  attribute?: string;
 };
 
 // Components
