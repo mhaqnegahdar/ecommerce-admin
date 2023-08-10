@@ -7,9 +7,9 @@ import StoreProvider from "./StoreProvider";
 
 const OuterProviders = ({ children }: ContainerProps) => {
   return (
-    <ClerkProvider>
-      <StoreProvider>{children}</StoreProvider>
-    </ClerkProvider>
+      <ClerkProvider>
+        <StoreProvider>{children}</StoreProvider>
+      </ClerkProvider>
   );
 };
 

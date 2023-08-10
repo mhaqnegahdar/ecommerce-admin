@@ -97,6 +97,9 @@ type ApiListProps = {
 // Layouts
 type ContainerProps = {
   children: React.ReactNode;
+  enableSystem?: boolean;
+  defaultTheme?: string;
+  attribute?: string;
 };
 
 // Components
@@ -169,6 +172,10 @@ export interface ImageInputProps {
   multiChoice: boolean;
 }
 
+type OverviewProps = {
+  data: any[];
+};
+
 export type {
   ContainerProps,
   ModalProps,
@@ -201,4 +208,5 @@ export type {
   ProductFormProps,
   ProductPatchParams,
   OrdersClientProps,
+  OverviewProps,
 };

@@ -11,6 +11,7 @@ const corsHeaders = {
 
 // Before sending any requests
 export async function OPTIONS() {
+  console.log("test");
   return NextResponse.json({}, { headers: corsHeaders });
 }
 

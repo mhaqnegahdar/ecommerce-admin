@@ -17,6 +17,10 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import { ThemeToggle } from "./ThemeToggle";
+
+// Icons
+import { Menu } from "lucide-react";
 
 const MobileNavBar = () => {
   const pathname = usePathname();
@@ -78,7 +82,9 @@ const MobileNavBar = () => {
       <NavigationMenuList>
         {/* Mbiel Menu */}
         <NavigationMenuItem className="block lg:hidden">
-          <NavigationMenuTrigger>Menu</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="px-2">
+            <Menu />
+          </NavigationMenuTrigger>
           <NavigationMenuContent className="">
             <ul className="grid w-[300px]  gap-3 p-4 md:w-[500px] grid-cols-2 lg:w-[600px]  -left-1/2">
               {routes.map(route => (
@@ -94,6 +100,7 @@ const MobileNavBar = () => {
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
+        <ThemeToggle />
       </NavigationMenuList>
     </NavigationMenu>
   );

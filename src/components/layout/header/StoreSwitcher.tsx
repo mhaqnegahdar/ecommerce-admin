@@ -70,10 +70,13 @@ const StoreSwitcher = ({ className, items = [] }: StoreSwitcherProps) => {
           role="combobox"
           aria-expanded={popOpen}
           aria-label="Select a store"
-          className={cn("w-[200px] justify-between", className)}
+          className={cn(
+            "w-[200px] justify-between line-clamp-1 px-1 sm:px-3",
+            className
+          )}
         >
           <StoreIcon className="me-2 h-4 w-4" />
-          {currentStore?.label}
+          <span className="line-clamp-1"> {currentStore?.label}</span>
           <ChevronsUpDown className="ms-auto h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>

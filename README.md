@@ -14,7 +14,7 @@ Database vusioalized ERD [here](https://dbdiagram.io/d/64c3cd7d02bd1c4a5ede3c37)
 - TypeScript
 - **Nextjs v13.4**
 - **Main Packages:** Redux, Clerk, Formik, Axios
-- **Secondary Packages:** HotToast
+- **Secondary Packages:** HotToast, Rechart
 - **DataBase:** MySQL + PlanetScale + Prisma
 - **Routing:** New app directory
 
@@ -66,4 +66,4 @@ npm run vercel-build
 
 ## Screenshots
 
-![Cover](./public/cover.png)
+![Cover](./public/cover.webp)
