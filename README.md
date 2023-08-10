@@ -2,7 +2,7 @@
 
 This is a practical **Ecommerce Admin** project using [Next.js](https://nextjs.org/) latest features bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Explore the E-commerce [demo](https://maxjn-ecommerce.vercel.app/) and its Admin [demo](https://maxjn-ecommerce-admin.vercel.app/) for better understanding'.
+Explore the E-commerce [demo](https://maxjn-ecommerce-store.vercel.app/) and its Admin [demo](https://maxjn-ecommerce-admin.vercel.app/) for better understanding'.
 
 You can also take a look at the project's store [repo](https://github.com/maxjn/ecommerce-store) if you want.
 
