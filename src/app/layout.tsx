@@ -11,6 +11,7 @@ import { ContainerProps } from "@/types/props";
 
 // Fonts
 import { Inter } from "next/font/google";
+import { ThemeProvider } from "@/components/providers/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +22,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ContainerProps) {
   return (
-    <OuterProviders>
+    <OuterProviders attribute="class" defaultTheme="system" enableSystem>
       <html lang="en">
         <body className={inter.className} suppressHydrationWarning={true}>
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <>
+              {children}
 
-          <InnerProviders />
+              <InnerProviders />
+            </>
+          </ThemeProvider>
         </body>
       </html>
     </OuterProviders>
