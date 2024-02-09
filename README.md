@@ -15,7 +15,7 @@ Database vusioalized ERD [here](https://dbdiagram.io/d/64c3cd7d02bd1c4a5ede3c37)
 - **Nextjs v13.4**
 - **Main Packages:** Redux, Clerk, Formik, Axios
 - **Secondary Packages:** HotToast, Rechart
-- **DataBase:** MySQL + PlanetScale + Prisma
+- **DataBase:** MySQL + ~~PlanetScale~~ + Aiven + Prisma 
 - **Routing:** New app directory
 
 ## Features
@@ -34,7 +34,7 @@ Database vusioalized ERD [here](https://dbdiagram.io/d/64c3cd7d02bd1c4a5ede3c37)
 - Order creation
 - Stripe checkout
 - Stripe webhooks
-- MySQL + Prisma + PlanetScale
+- MySQL + Prisma + ~~PlanetScale~~ + Aiven
 
 ## Installation
 
@@ -50,7 +50,7 @@ Starting a development instance of the app
 # Install Dependencies
 npm install
 
-# Connect to PlanetScale and Push Prisma
+# Connect to Your Database and Push Prisma
 npx prisma generate
 npx prisma db push
 
